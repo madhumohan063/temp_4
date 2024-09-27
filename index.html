@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps Directions with Traffic & Distance</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpYWXC4GR0aVyoK3x9Fg_Dg6x4BFSSdDg&libraries=places&callback=initMap" async defer></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    #map {
+      height: 70vh;
+      width: 100%;
+      /* Set width to allow space for the info */
+      float: left;
+      /* Align map to the left */
+    }
+
+    #info {
+      width: 90%;
+      /* Set width for the info section */
+      float: left;
+      /* Align info to the left of the map */
+      padding: 10px;
+      /* Add some padding */
+    }
+
+    #info div {
+      margin-bottom: 5px;
+      /* Reduced space between distance and duration */
+    }
+
+    /* Clear floats after the map and info */
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+  </style>
+</head>
+
+<body class="clearfix">
+  <h1>Find Route with Traffic, Distance, and Weather</h1>
+  <div id="map"></div>
+
+  <div id="info">
+    <div id="distance">Distance: N/A</div>
+    <div id="duration">Duration: N/A</div>
+    <label>Source Location: </label>
+    <input id="source" type="text" placeholder="Enter source location">
+    <input id="destination" type="text" placeholder="Enter destination location">
+    
+
+    <input type="text" id="waypoints" placeholder="Enter waypoints (comma separated)">
+    <label>
+      <input type="checkbox" id="useCurrentLocation"> Use current location as source
+    </label>
+    <select id="mode">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+    <button onclick="calculateRoute()">Calculate Route</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
